@@ -11,4 +11,10 @@ public class Rental(Equipment equipment, User user, DateTime rentalDate, DateTim
     public DateTime? ReturnDate { get; private set; }
     
     public bool IsReturned => ReturnDate.HasValue;
+    
+    public void MarkAsReturned(DateTime returnDate)
+    {
+        ReturnDate = returnDate;
+        Equipment.Status = Enums.EquipmentStatus.Available;
+    }
 }
